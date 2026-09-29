@@ -10,7 +10,7 @@ A complete, unofficial single-player football game for Manchester United fans. O
 
 ## Features
 
-- Four game modes; 54 curated player records across historical and modern eras.
+- Four game modes; 62 curated player records across historical and modern eras.
 - Three difficulties, with normal as the default. Hard favours closer values.
 - Chained rounds: the previous challenger becomes the benchmark.
 - Recent-player and unordered-pair history; ties and invalid values never become questions.
@@ -132,7 +132,7 @@ Add a record in `src/data/players.ts`, add any new reference to `src/data/source
 
 ### Data sources / definitions
 
-Statistics are curated for gameplay and should be verified against the referenced sources before production publication.
+Statistics are curated for gameplay and should be verified against the referenced sources. The recent-player totals below are snapshots from Manchester United's official career profiles retrieved on 2026-09-29; they are not live values and can change in later releases.
 
 - **Appearances:** Manchester United men's first-team competitive appearances in all competitions, including Charity/Community Shield. Excludes friendlies, wartime games and abandoned competitions as described in the reference table.
 - **Goals:** Same competition scope as appearances. Goals mode filters low scoring players for gameplay; it does not alter the statistics.
@@ -146,6 +146,7 @@ Initial references reviewed on 2026-09-29:
 - [The Independent: Carrick and Berbatov fees](https://www.the-independent.com/sport/football/premier-league/manchester-united-tottenham-spurs-news-eric-dier-pochettino-mourinho-a8021606.html)
 - [Cantona official profile](https://www.manutd.com/en/players-and-staff/detail/eric-cantona)
 - [Official legends reference](https://www.manutd.com/en/players-and-staff/legends)
+- Official Manchester United career profiles for recent players are linked individually from the game's About page. Their United Career appearance and goal totals were captured on 2026-09-29.
 
 The seed is manually curated; there is no scraper, scheduled collection or live-statistics claim. Reference pages were consulted, but this is not a claim that every field has been independently audited against primary sources.
 
@@ -153,13 +154,13 @@ The seed is manually curated; there is no scraper, scheduled collection or live-
 
 Before a public launch:
 
-1. **Audit all 54 records against primary sources**, especially competition inclusion, exact spell boundaries and any historical-statistic discrepancies. Preserve the source IDs and record changes with dates.
+1. **Audit all 62 records against primary sources**, especially competition inclusion, exact spell boundaries and any historical-statistic discrepancies. Preserve the source IDs and record changes with dates.
 2. **Eric Cantona:** appearances intentionally omitted because the club profile shows 182 while the historical competitive table shows 185. The table/profile agree on 82 goals; the article's prose displayed a conflicting 87 and was not used. Reconcile competition scope before adding appearances.
-3. **Anthony Martial, Harry Maguire, Casemiro, Romelu Lukaku, Jadon Sancho and Antony:** fee-only entries. Appearance, goal and duration fields are intentionally omitted pending verified, dated totals and career boundaries. `null` end years are unknown, not current-status claims.
+3. **Anthony Martial, Romelu Lukaku, Jadon Sancho and Antony:** appearance and goal fields remain omitted pending dated, verifiable totals. Maguire and Casemiro now use dated totals from their official United profiles. `null` end years are unknown, not current-status claims.
 4. **Every fee-mode entry:** confirm the accounting convention. In particular, Cole's player exchange, Carrick's add-ons, Ferdinand's reported total, and Pogba's return transfer need explicit editorial acceptance. The compact mode describes these as reported fees.
 5. **Ronaldo, Pogba, Hughes and Scholes:** confirm the documented approximation is the desired product rule. Do not replace the values with a single start-to-end span or label them “seasons”. Review loan-spanning records such as Nani and Hernández under the same policy.
 6. **Other missing fees:** intentionally excluded. Do not infer fees for academy players, free transfers, loans or unknown transactions. Add more only with a reference.
-7. Recent players such as Rashford, Bruno Fernandes, Shaw and Martínez are not in this historical-first pool yet. Add dated, reviewed snapshots before including them; do not use undated totals from example briefs.
+7. Rashford, Bruno Fernandes, Shaw, Martínez, Dalot, Amad, Mainoo and Mount have been added using dated official-profile snapshots. Recheck those rolling totals before future data releases, and add other recent players only with a clearly scoped, dated source.
 
 See per-record `dataNote` fields for exceptions. Accurate data is an editorial launch step, not a reason to invent figures.
 

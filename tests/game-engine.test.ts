@@ -89,7 +89,7 @@ test("goals exclude keepers and low-scoring players, transfer pool excludes zero
   );
 });
 test("curated dataset has unique ids, traceable references and enough distinct values in every mode", () => {
-  assert.ok(players.length >= 40);
+  assert.ok(players.length >= 60);
   assert.equal(new Set(players.map((p) => p.id)).size, players.length);
   for (const p of players) assert.ok(p.sourceIds.length > 0);
   for (const mode of MODES)
@@ -119,6 +119,27 @@ test("returning careers use explicit spell sums; no runtime span across absences
     ),
     18,
   );
+});
+test("recent first-team additions have dated, traceable official career totals", () => {
+  const expected: Record<string, [number, number]> = {
+    rashford: [432, 138],
+    "bruno-fernandes": [334, 111],
+    "luke-shaw": [329, 5],
+    maguire: [276, 17],
+    casemiro: [160, 26],
+    "lisandro-martinez": [115, 4],
+    "diogo-dalot": [252, 10],
+    "amad-diallo": [97, 16],
+    "kobbie-mainoo": [109, 8],
+    "mason-mount": [75, 8],
+  };
+  for (const [id, [appearances, goals]] of Object.entries(expected)) {
+    const player = players.find((entry) => entry.id === id);
+    assert.ok(player, `${id} is in the player pool`);
+    assert.equal(player.appearances, appearances);
+    assert.equal(player.goals, goals);
+    assert.ok(player.sourceIds.some((sourceId) => sourceId.startsWith("club-")));
+  }
 });
 test("all modes and difficulties sustain long chains without same players, ties or recent pairs", () => {
   for (const mode of MODES)

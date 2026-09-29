@@ -3,8 +3,8 @@
 ## Automated checks
 
 - `npm run lint`: passed, no warnings.
-- `npm test`: 15 tests passed, including 3,000 seeded chained rounds (4 modes × 3 difficulties × 250 rounds).
-- `npm run build`: passed; TypeScript passed; all routes prerendered successfully.
+- `npm test`: 16 tests passed, including recent-player snapshot/source checks and 3,000 seeded chained rounds (4 modes × 3 difficulties × 250 rounds).
+- `GITHUB_PAGES=true NEXT_PUBLIC_SITE_URL=https://brandonwilliams33.github.io/united-higher-lower npm run build`: passed; TypeScript passed; all routes exported as static content.
 - Production HTTP smoke checks: `/`, `/stats`, `/about`, `/robots.txt`, `/sitemap.xml`, `/manifest.webmanifest`, `/opengraph-image`, `/icon.svg` return 200 with expected content types. An unknown route returns 404.
 - Invalid/missing statistics, equal values, identical players, exhausted pools, returning-player durations, corrupt storage, unavailable storage, throwing browser storage getters and quota errors are covered by unit tests.
 
@@ -26,5 +26,4 @@
 
 - No claim of a Lighthouse score; Lighthouse was not run.
 - Clipboard-denied fallback and reduced-motion styles were code-reviewed; OS-level clipboard denial and reduced-motion settings were not toggled in the user's browser.
-- Vercel compatibility is supported by a successful standard Next.js production build, not by an actual Vercel deployment. No account was connected and no public URL was created.
-- Data still requires the editorial review documented in README's DATA TODO before a public launch.
+- Recent-player totals are official Manchester United profile snapshots captured on 2026-09-29, not live feeds. Historical records and the remaining missing fields still require the editorial review documented in README's DATA TODO.
